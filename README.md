@@ -90,3 +90,15 @@ Código-base: Thiago Poiani, DIO Spring Boot Learning Track.
 https://github.com/thpoiani/dio-spring-boot-learning-track/tree/main/05-spring-ai
 
 Esta entrega apresenta a reprodução e a validação local do módulo didático, com documentação das verificações realizadas e das limitações encontradas.
+## Validacao complementar de reconhecimento de fala
+
+Em 21/11/2026, foi realizado um teste real de transcricao com a API Groq, utilizando o modelo whisper-large-v3-turbo e o idioma portugues.
+
+- Arquivo: recording-1.m4a
+- Resultado: "Passei na farmácia rapidinho e deixei 80 reais em 3 itens."
+- Status: transcricao concluida com sucesso.
+- Custo: realizado utilizando o plano gratuito da Groq.
+
+Este teste foi realizado diretamente na API Groq, sem integracao com o endpoint Spring Boot.
+
+Permanecem sem validacao de ponta a ponta o Tool Calling e a geracao de audio pelo endpoint /transactions/ai.
