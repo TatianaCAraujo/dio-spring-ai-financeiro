@@ -75,6 +75,42 @@ Durante a atividade foram realizadas:
 - Validação dos filtros PHARMA e AUTO.
 - Execução bem-sucedida do teste automatizado BudgetingApplicationTests.contextLoads().
 
+## Teste automatizado do fluxo de audio com mocks
+
+Em 21/11/2026, foi executado um teste automatizado do endpoint POST /transactions/ai, utilizando JUnit, Mockito e MockMvc.
+
+Arquivo de teste:
+`src/test/java/dio/budgeting/infrastructure/http/TransactionControllerAudioMockTest.java`
+
+### O que foi validado
+
+- Recebimento de arquivo multipart no endpoint.
+- Chamada ao servico de transcricao simulado.
+- Encaminhamento do texto simulado ao ChatClient.
+- Chamada ao servico de sintese de voz simulado.
+- Resposta HTTP 200.
+- Retorno dos bytes simulados e cabecalho com nome audio.mp3.
+
+### Como reproduzir
+
+```powershell
+.\gradlew.bat test --tests "dio.budgeting.infrastructure.http.TransactionControllerAudioMockTest"
+```
+
+Resultado obtido: **BUILD SUCCESSFUL**.
+
+### Escopo e limitacoes
+
+Este teste utiliza respostas simuladas, sem consumir APIs externas, sem iniciar um servidor HTTP real e sem exigir banco de dados.
+
+Os bytes retornados sao simulados e nao representam um arquivo MP3 reproduzivel.
+
+O teste nao executa um modelo real de IA, nao comprova a execucao efetiva de Tool Calling e nao valida o reconhecimento de fala real pelo endpoint Java.
+
+A transcricao real foi validada separadamente com a API Groq e esta documentada neste README.
+
+A estrategia adotada priorizou testes funcionais e automatizados sem contratar APIs pagas, mantendo explicitas as funcionalidades ainda nao validadas de ponta a ponta.
+
 ## Limitações da validação
 
 A integração real com OpenAI não foi executada por exigir credenciais de API e poder gerar custos.
